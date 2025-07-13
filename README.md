@@ -1,5 +1,5 @@
 # Shopylive
-
+Cek Update Bot https://github.com/amrunkhakim/ShopeeAutomator
 Shopylive
 Shopylive adalah sebuah bot sederhana yang digunakan untuk menambahkan jumlah penonton pada sesi live di platform Shopee. Bot ini dirancang untuk membantu meningkatkan visibilitas dan interaksi dalam sesi live, yang dapat membantu dalam meningkatkan penjualan dan kehadiran di platform.
 
@@ -34,4 +34,6 @@ Proyek ini dilisensikan di bawah Lisensi MIT. Lihat berkas LICENSE untuk informa
 
 Dengan menggunakan bot ini, Anda setuju untuk bertanggung jawab atas penggunaannya dan mematuhi semua kebijakan dan aturan yang berlaku di platform Shopee.
 Donasi yuk
-https://trakteer.id/amrun-khakim/tip
+
+
+
