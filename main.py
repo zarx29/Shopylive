@@ -1,9 +1,11 @@
-from asyncio import wait
 import os
 import random
 import time
 import re
 import string
+from selenium webdriver.chrome.service import service
+from selenium webdriver.chorme.options import options
+from webdriver_manager.chrome import ChronmeDriverManager
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -20,20 +22,17 @@ def print_header():
     print(Fore.BLUE + "         ")
 
 def setup_selenium(proxy_address=None):
-    # Set path to Chrome WebDriver
-    chrome_driver_path = 'C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe'
-
-    # Configure Chrome options
-    options = webdriver.ChromeOptions()
+    options = options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    options.add_argument("--start maximized")
   
     # Add proxy settings if provided
     if proxy_address:
         options.add_argument(f'--proxy-server={proxy_address}')
-
-    # Specify the Chrome WebDriver executable path using Service
-    service = webdriver.chrome.service.Service(executable_path=chrome_driver_path)
-
+        service = service(ChromeDiverManager().install)
+        
+# Specify the Chrome WebDriver executable path using Service
+    
     # Launch browser
     browser = webdriver.Chrome(service=service, options=options)
     # Clear cache and cookies
@@ -50,7 +49,7 @@ def generate_random_viewer():
 def input_data():
     try:
         session_id = input('(#) Session ID : ')
-        loop_count = int(input('(#) Jumlah Viewers: '))
+        loop_count = int(input('(#) Jumlah Viewers yg ingin ditambah: '))
         print("=====================================")
         if loop_count <= 0:
             raise ValueError("Number of viewers should be a positive integer.")
@@ -94,8 +93,8 @@ browser = setup_selenium()
 # Loop to add viewers
 for _ in range(loop_count):
     navigate_to_link(browser, 'https://shopee.co.id/buyer/login/qr')
-    wait = WebDriverWait(browser, 60)
-    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.shopee-avatar__img')))
+    wait_driver = WebDriverWait(browser, 60)
+    wait_driver.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.shopee-avatar__img')))
     navigate_to_link(browser, link_live)
     
     # Get current viewer count
